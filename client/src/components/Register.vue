@@ -2,15 +2,15 @@
   <div>
     <h1>Register</h1>
 
-    <input 
+    <input
     type="email"
-    name="email" 
+    name="email"
     v-model="email"
     placeholder="email" />
     <br>
-    <input 
+    <input
     type="password"
-    name="password" 
+    name="password"
     v-model="password"
     placeholder="password" />
     <br>
@@ -30,20 +30,13 @@ export default {
     }
   },
   methods: {
-      async register() {
-        await AuthenticationService.register({
-         email: this.email,
-         password: this.password
-       })
+    async register () {
+      await AuthenticationService.register({
+        email: this.email,
+        password: this.password
+      })
     }
   }
-/*
-  mounted () {
-    setTimeout(() => {
-      this.email = 'hello world'
-    }, 2000)
-  }
-  */
 }
 </script>
 
