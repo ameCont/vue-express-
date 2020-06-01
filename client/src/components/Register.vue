@@ -30,16 +30,20 @@ export default {
     }
   },
   methods: {
-    register () {
-      console.log('register button was clicked', this.email, this.password)
+      async register() {
+        await AuthenticationService.register({
+         email: this.email,
+         password: this.password
+       })
     }
-  }, 
-
+  }
+/*
   mounted () {
     setTimeout(() => {
       this.email = 'hello world'
     }, 2000)
   }
+  */
 }
 </script>
 
