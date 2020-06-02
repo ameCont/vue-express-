@@ -4,7 +4,7 @@ const AuthenticationControllerPolicy = require('./policies/AuthenticationControl
 
 module.exports = (app) => {
     app.post('/register',
-        AuthenticationController.register,
+        AuthenticationControllerPolicy.register,
         AuthenticationController.register)
         console.log('messageRouts')
 }
