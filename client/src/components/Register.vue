@@ -5,7 +5,7 @@
         <v-toolbar flat dense class="cyan" dark>
           <v-toolbar-title>Register</v-toolbar-title>
         </v-toolbar>
-
+        <div class="pl-4 pr-4 pt-2 pb-2">
           <input
             type="email"
             name="email"
@@ -20,8 +20,10 @@
           <br>
           <div class="error" v-html="error"/>
           <br>
-          <button
-          @click="register">Register</button>
+          <v-btn
+          class="cyan"
+          @click="register">Register</v-btn>
+        </div>
         </div>
     </v-flex>
   </v-layout>
