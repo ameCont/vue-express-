@@ -13,7 +13,7 @@ app.post('/register', (req,res) => {
         message: `Hello ${req.body.email}! Your user was registered. Have fun!`
     })
 })
-/
+
 /*
 app.post('/pregister', (req,res) => {
     res.send({
