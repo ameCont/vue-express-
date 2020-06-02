@@ -1,7 +1,14 @@
 <template>
   <div id="app">
-   <!-- <img src="./assets/logo.png"> -->
-    <router-view/>
+
+      <page-header/>
+
+      <main>
+        <v-container fluid>
+            <router-view></router-view>
+        </v-container>
+      </main>
+
   </div>
 </template>
 
