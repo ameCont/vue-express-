@@ -7,4 +7,8 @@ module.exports = (app) => {
         AuthenticationControllerPolicy.register,
         AuthenticationController.register)
         console.log('messageRouts')
+
+    app.post('/login',
+        AuthenticationController.login)
+        console.log('loginMessage')
 }
