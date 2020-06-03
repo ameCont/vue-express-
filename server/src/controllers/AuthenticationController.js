@@ -28,7 +28,7 @@ module.exports = {
 
           const isPasswordValid = password === user.password
           if  (!isPasswordValid) {
-            return res.status(403).send)({
+            return res.status(403).send({
               error: 'The login info was incorrect'
             })
           }
