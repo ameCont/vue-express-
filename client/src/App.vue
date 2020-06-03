@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!--<v-app>-->
+    <v-app>
       <page-header/>
 
       <main>
@@ -8,7 +8,7 @@
             <router-view></router-view>
         </v-container>
       </main>
-    <!--</v-app>-->
+    </v-app>
   </div>
 </template>
 
