@@ -15,9 +15,10 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "css-mqpacker": "^7.0.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vuetify": "^2.2.31"
+    "vuetify": "^0.15.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
