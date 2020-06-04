@@ -7,6 +7,9 @@
         </v-toolbar>
 
         <div class="pl-4 pr-4 pt-2 pb-2">
+          <form
+          name="vue-form"
+          autocomplete="off">
           <v-text-field
           label="Email"
           v-model="email">
@@ -14,8 +17,11 @@
           <br>
          <v-text-field
           label="Password"
+          type="password"
+          autocomplete="new-password"
           v-model="password">
           </v-text-field>
+          </form>
           <br>
 
           <div class="error" v-html="error"/>
