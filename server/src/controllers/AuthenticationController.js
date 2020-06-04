@@ -15,13 +15,13 @@ module.exports = {
     async login (req, res) {
         try {
           const {email, password} = req.body
-          const user = await User.findOne(req.body)({
+          const user = await User.findOne({
             where: {
               email: email
             }
           })
           if (!user) {
-            res.status(403).send({
+            return res.status(403).send({
               error: 'The login info was incorrect'
             })
           }
@@ -33,7 +33,7 @@ module.exports = {
             })
           }
 
-          const userJson = user.JSON()
+          const userJson = user.toJSON()
           res.send({
             user: userJson
           })
