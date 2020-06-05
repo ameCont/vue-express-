@@ -7,6 +7,7 @@ module.exports = {
             limit: 10
           })
           res.send(songs)
+          console.log("we are at index")
         } catch (err) {
           res.status(500).send({
             error: 'an error has occured trying to fetch the songs'
