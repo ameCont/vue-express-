@@ -10,10 +10,9 @@
 
       <v-toolbar-items>
         <v-btn
-        flat
-        dark
+        flat dark
         @click="navigateTo({name: 'songs'})">
-        Browse
+        Songs
         </v-btn>
     </v-toolbar-items>
 
@@ -26,13 +25,6 @@
       @click="navigateTo({name: 'login'})">
       Login
       </v-btn>
-      <v-btn
-      v-if="!$store.state.isUserLoggedIn"
-      flat dark
-      @click="navigateTo({name: 'login'})">
-      Login
-      </v-btn>
-
       <v-btn
       v-if="!$store.state.isUserLoggedIn"
       flat dark
