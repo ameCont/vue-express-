@@ -2,27 +2,31 @@
    <v-layout column>
     <v-flex xs6 offset-xs3>
       <panel title="Songs">
-        <!-- <div slot="hello">
-          <h3>YO YO YO</h3>
-          <p>Hello there I am a paragraph tag</p>
+        <div v-for="song in songs"
+        :key="song.title">
+          {{song.title}} -
+          {{song.artist}} -
+          {{song.album}}
         </div>
-        <div slot="bye">
-          <h3>bye bye bye</h3>
-          <p>
-            BYE
-          </p>
-        </div>
-        -->
       </panel>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
+import SongsService from '@/services/SongsService'
 import Panel from '@/components/Panel'
 export default {
   components: {
     Panel
+  },
+  data () {
+    return {
+      songs: null
+    }
+  },
+  async mounted () {
+    this.songs = await SongsService.index()
   }
 }
 </script>
