@@ -17,5 +17,4 @@ module.exports = (app) => {
 
     app.post('/songs',
         SongsController.post)
-
 }
