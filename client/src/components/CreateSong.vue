@@ -65,9 +65,9 @@
         </v-text-field>
       </panel>
 
-      <span class="error" v-if="error">
+      <div class="danger-alert" v-if="error">
         {{error}}
-      </span>
+      </div>
 
       <v-btn
         dark

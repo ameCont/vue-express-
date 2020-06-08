@@ -32,7 +32,7 @@ export default {
   margin-top: 60px;
 }
 
-.input-grup--text-field input {
-  border-bottom: 1px solid black;
+.danger-alert {
+  color: red;
 }
 </style>
