@@ -103,12 +103,13 @@ export default {
     async create () {
       this.error = null
       const areAllFieldsFilledIn = Object
-      .keys(this.song)
-      .every(key => !!song[key])
-    if (!areAllFieldsFilledIn) {
-      this.error = 'Please fill in all the required fields'
-      return
-    }
+        .keys(this.song)
+        .every(key => !!this.song[key])
+      if (!areAllFieldsFilledIn) {
+        this.error = 'Please fill in all the required fields'
+        return
+      }
+
       try {
         await SongsService.post(this.song)
         this.$router.push({
