@@ -26,8 +26,9 @@ export default {
     }
   },
   async mounted () {
-    // this.songs = (await SongsService.index()).data
-    this.songs = (SongsService.index()).data
+  // mounted () {
+    this.songs = (await SongsService.index()).data
+    // this.songs = (SongsService.index()).data
     console.log('songs', this.songs)
   }
 }
