@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-flex xs6>
+    <v-flex xs4>
       <panel title="Song Metadata">
         <v-text-field
         label="Title"
@@ -30,6 +30,22 @@
         <v-text-field
         label="Youtube ID"
         v-model="youtubeId">
+        </v-text-field>
+      </panel>
+    </v-flex>
+
+    <v-flex xs8>
+      <panel title="Song Structure">
+        <v-text-field
+            label="Tab"
+            multiline
+            v-model="tab">
+        </v-text-field>
+
+        <v-text-field
+            label="Lyrics"
+            multiline
+            v-model="lyrics">
         </v-text-field>
       </panel>
     </v-flex>
