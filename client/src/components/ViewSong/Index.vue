@@ -10,27 +10,21 @@
       </v-flex>
     </v-layout>
 
-      <!--
-      <v-layout>
-        <v-flex xs6>
-          <panel title="YouTube Video">
-          </panel>
-        </v-flex>
+    <v-layout class="mt-2">
+      <v-flex xs6>
+        <tab :song="song" />
+      </v-flex>
 
       <v-flex xs6 class="ml-2">
-        <panel title="Lyrics">
-          <textarea
-            readonly
-            v-model="song.lyrics">
-          </textarea>
-        </panel>
+        <lyrics :song="song"/>
       </v-flex>
     </v-layout>
-    -->
   </div>
 </template>
 
 <script>
+import Lyrics from './Lyrics'
+import Tab from './Tab'
 import SongMetadata from './SongMetadata'
 import YouTube from './YouTube'
 import SongsService from '@/services/SongsService'
@@ -51,7 +45,9 @@ export default {
   components: {
     Panel,
     SongMetadata,
-    YouTube
+    YouTube,
+    Lyrics,
+    Tab
   }
 }
 </script>
