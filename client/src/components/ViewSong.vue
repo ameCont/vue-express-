@@ -26,7 +26,7 @@
       </panel>
     </v-flex>
 
-    <v-flex xs6>
+    <v-flex xs6 class="ml-2">
       <panel title="Tabs">
         {{song.tab}}
       </panel>
