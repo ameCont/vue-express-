@@ -1,40 +1,50 @@
 <template>
-  <v-layout>
-    <v-flex xs6>
-      <panel title="Song Metadata">
-        <v-layout>
-          <v-flex xs6>
-            <div class="song-title">
-              {{song.title}} -
-            </div>
+  <div>
+    <v-layout>
+      <v-flex xs6>
+        <panel title="Song Metadata">
+          <v-layout>
+            <v-flex xs6>
+              <div class="song-title">
+                {{song.title}} -
+              </div>
 
-            <div class="song-artist">
-              {{song.artist}} -
-            </div>
+              <div class="song-artist">
+                {{song.artist}} -
+              </div>
 
-            <div class="song-genre">
-              {{song.genre}}
-            </div>
-          </v-flex>
+              <div class="song-genre">
+                {{song.genre}}
+              </div>
+            </v-flex>
 
-          <v-flex xs6>
-            <img class="album-image" :src="song.albumImageUrl"/>
-            <br>
-            {{song.album}}
-          </v-flex>
-        </v-layout>
-      </panel>
-    </v-flex>
+            <v-flex xs6>
+              <img class="album-image" :src="song.albumImageUrl"/>
+              <br>
+              {{song.album}}
+            </v-flex>
+          </v-layout>
+        </panel>
+      </v-flex>
+    </v-layout>
 
-    <v-flex xs6 class="ml-2">
-      <panel title="Tabs">
-        <textarea
-          readonly
-          v-model="song.tab">
-        </textarea>
-      </panel>
-    </v-flex>
-  </v-layout>
+      <v-layout>
+        <v-flex xs6>
+          <panel title="Song Metadata">
+          <!-- youtube embedded -->
+          </panel>
+        </v-flex>
+
+      <v-flex xs6 class="ml-2">
+        <panel title="Lyrics">
+          <textarea
+            readonly
+            v-model="song.lyrics">
+          </textarea>
+        </panel>
+      </v-flex>
+    </v-layout>
+  </div>
 </template>
 
 <script>
