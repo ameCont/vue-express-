@@ -17,6 +17,7 @@ module.exports = (app) => {
 
     app.get('/songs/:songId',
         SongsController.show)
+    //console.log('routes.js')
     console.log('songId')
 
     // app.post('/songs',

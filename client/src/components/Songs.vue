@@ -14,7 +14,9 @@
           fab>
           <v-icon>add</v-icon>
         </v-btn>
-        <div v-for="song in songs"
+
+        <div
+        v-for="song in songs"
         class="song"
         :key="song.id">
 

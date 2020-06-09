@@ -19,7 +19,7 @@ module.exports = {
       try {
        console.log('show s')
        console.log(req.params.songId)
-       const song = await Song.findById(req.params.songId)
+       const song = await Song.findByPk(req.params.songId)
        console.log('song no ')
        //console.log(song)
        res.send(song)
