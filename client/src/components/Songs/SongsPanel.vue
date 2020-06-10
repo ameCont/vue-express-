@@ -67,11 +67,13 @@ export default {
       this.$router.push(route)
     }
   },
-  async mounted () {
-  // mounted () {
-    this.songs = (await SongsService.index()).data
-    // this.songs = (SongsService.index()).data
-    console.log('songs', this.songs)
+  watch: {
+    '$route.query.search': {
+      immediate: true,
+      async handler (value) {
+        this.songs = (await SongsService.index(value)).data
+      }
+    }
   }
 }
 </script>
