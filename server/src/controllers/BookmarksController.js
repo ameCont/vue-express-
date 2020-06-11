@@ -21,11 +21,9 @@ module.exports = {
     },
     async post (req, res) {
       try {
-        const {songId, userId} = req.body
-        const bookmark = await Bookmark.findOne({})
-
-        const newBookmark = await Bookmark.create(req.body)
-        res.send(bookmark)
+        const bookmark = req.query
+        const newBookmark = await Bookmark.create(bookmark)
+        res.send(newBookmark)
       } catch (err) {
         res.status(500).send({
           error: 'an error has occured trying to create the bookmark'

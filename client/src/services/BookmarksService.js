@@ -7,9 +7,7 @@ export default {
     })
   },
   post (bookmark) {
-    return Api().post('bookmarks', {
-      params: params
-    })
+    return Api().post('bookmarks', bookmark)
   },
   delete (bookmarkId) {
     return Api().delete(`bookmarks/${bookmarkId}`)
