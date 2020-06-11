@@ -75,8 +75,8 @@ export default {
   watch: {
     async song () {
       if (!this.isUserLoggedIn) {
-      return
-    }
+        return
+      }
 
       try {
         this.bookmark = (await BookmarksService.index({

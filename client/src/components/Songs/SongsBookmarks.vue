@@ -4,7 +4,7 @@
       :headers="headers"
       :pagination.sync="pagination"
       :items="bookmarks">
-      <template slot="items" scope="props">
+      <template slot="items" slot-scope="props">
         <td class="text-xs-right">
           {{props.item.title}}
         </td>
@@ -24,29 +24,20 @@ export default {
   data () {
     return {
       headers: [
-          {
-            text: 'Title',
-            value: 'title'
-          },
-          {
-            text: 'Artist',
-            value: 'artist'
-          }
+        {
+          text: 'Title',
+          value: 'title'
+        },
+        {
+          text: 'Artist',
+          value: 'artist'
+        }
       ],
       pagination: {
         sortBy: 'date',
         descending: true
       },
-      bookmarks: [
-        {
-          title: 'hello world',
-          artist: 'Testing'
-        },
-        {
-          title: 'hello world',
-          artist: 'Testing'
-        }
-      ]
+      bookmarks: []
     }
   },
   computed: {
@@ -59,7 +50,7 @@ export default {
     if (this.isUserLoggedIn) {
       this.bookmarks = (await BookmarksService.index({
         userId: this.user.id
-      }))
+      })).data
     }
   }
 }
