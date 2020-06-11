@@ -72,18 +72,20 @@ export default {
       'isUserLoggedIn'
     ])
   },
-  async mounted () {
-    if (!this.isUserLoggedIn) {
+  watch: {
+    async song () {
+      if (!this.isUserLoggedIn) {
       return
     }
 
-    try {
-      this.bookmark = (await BookmarksService.index({
-        songId: this.song.id,
-        userId: this.$store.state.user.id
-      })).data
-    } catch (err) {
-      console.log(err)
+      try {
+        this.bookmark = (await BookmarksService.index({
+          songId: this.song.id,
+          userId: this.$store.state.user.id
+        })).data
+      } catch (err) {
+        console.log(err)
+      }
     }
   },
   methods: {
