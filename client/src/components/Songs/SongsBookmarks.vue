@@ -6,7 +6,10 @@
       :items="bookmarks">
       <template slot="items" scope="props">
         <td class="text-xs-right">
-
+          {{props.item.title}}
+        </td>
+        <td class="text-xs-right">
+          {{props.item.artist}}
         </td>
       </template>
     </v-data-table>
@@ -14,6 +17,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import BookmarksService from '@/services/BookmarksService'
+
 export default {
   data () {
     return {
@@ -41,6 +47,19 @@ export default {
           artist: 'Testing'
         }
       ]
+    }
+  },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+      'user'
+    ])
+  },
+  async mounted () {
+    if (this.isUserLoggedIn) {
+      this.bookmarks = (await BookmarksService.index({
+        userId: this.user.id
+      }))
     }
   }
 }
