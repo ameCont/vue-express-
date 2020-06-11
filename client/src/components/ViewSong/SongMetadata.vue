@@ -73,6 +73,10 @@ export default {
     ])
   },
   async mounted () {
+    if (!this.isUserLoggedIn) {
+      return
+    }
+
     try {
       const bookmark = (await BookmarksService.index({
         songId: this.song.id,
