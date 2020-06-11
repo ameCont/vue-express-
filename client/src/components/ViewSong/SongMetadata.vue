@@ -18,7 +18,7 @@
           dark
           class="cyan"
           :to="{
-            name: 'songs-edit',
+            name: 'song-edit',
             params () {
               return {
                 songId: song.id
