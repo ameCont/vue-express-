@@ -29,7 +29,7 @@
         </v-btn>
 
         <v-btn
-          v-if="isUserLoggedIn"
+          v-if="isUserLoggedIn && !isBookmarked"
           dark
           class="cyan"
           @click="unbookmark">
@@ -37,7 +37,7 @@
         </v-btn>
 
         <v-btn
-          v-if="isUserLoggedIn"
+          v-if="isUserLoggedIn && isBookmarked"
           dark
           class="cyan"
           @click="bookmark">
@@ -62,17 +62,23 @@ export default {
   props: [
     'song'
   ],
+  data () {
+    return {
+      isBookmarked: false
+    }
+  },
   computed: {
     ...mapState([
       'isUserLoggedIn'
     ])
   },
   async mounted () {
-    const bookmark = await BookmarksService.index({
+    const bookmark = (await BookmarksService.index({
       songId: 1,
       userId: 1
-    })
-    console.log('bookmark', bookmark)
+    })).data
+    this.isBookmarked = !!bookmark
+    console.log('bookmark', this.isBookmarked)
   },
   methods: {
     bookmark () {
