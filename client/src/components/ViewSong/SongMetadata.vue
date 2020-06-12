@@ -95,10 +95,12 @@ export default {
   methods: {
     async setAsBookmark () {
       try {
+        console.log('setAsBookmark')
         this.bookmark = (await BookmarksService.post({
           songId: this.song.id,
           userId: this.user.id
         })).data
+        console.log(this.song.id)
       } catch (err) {
         console.log(err)
       }

@@ -22,10 +22,11 @@ module.exports = {
           }
         ]
       }).map(bookmark => bookmark.toJSON())
-        .map(bookmark => _.extend({
-          id: bookmark.id,
-          bookmarkId: bookmark.id
-        }, bookmark.Song))
+        .map(bookmark => _.extend(
+          {},
+          bookmark.Song,
+          bookmark
+        ))
       res.send(bookmarks)
     } catch (err) {
       res.status(500).send({
