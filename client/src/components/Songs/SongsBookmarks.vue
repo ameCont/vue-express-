@@ -50,7 +50,6 @@ export default {
     if (this.isUserLoggedIn) {
       this.bookmarks = (await BookmarksService.index({
         userId: this.user.id
-        // songId: this.song.id
       })).data
     }
   }
