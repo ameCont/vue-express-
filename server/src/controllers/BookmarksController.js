@@ -1,31 +1,23 @@
-const {
-  Bookmark,
-  Song,
-  User
-} = require('../models')
-const _ = require('lodash')
+const {Bookmark} = require('../models')
+const { Op } = require('sequelize');
+
 module.exports = {
   async index (req, res) {
     try {
-      const {songId, userId} = req.query
+      // const {songId, userId} = req.query
+      const songId = req.query.songId
+      const userId = req.query.userId
+      console.log('songId: ', songId)
+      console.log('userId: ', userId)
       /*
       const songId = req.body.params.songId
       const userId = req.body.params.userId
-
-      console.log('SONG ID')
-      console.log(songId)
-
-      const where = {
-        UserId: userId
-      }
-      if (songId) {
-        where.SongId = songId
-      }*/
+      */
       const bookmark = await Bookmark.findOne({
         where: {
-            SongId: songId,
-            UserId: userId
-          }
+          SongId: songId,
+          UserId: userId
+        }
       })
       res.send(bookmark)
     } catch (err) {
@@ -36,8 +28,15 @@ module.exports = {
   },
   async post (req, res) {
     try {
+      //const bookmark = req.body
       const {songId, userId} = req.body
+
+      // const songId = req.body.params.songId
+      // const userId = req.body.params.userId
+      console.log('songId: ', songId)
+
       const bookmark = await Bookmark.findOne({
+
         where: {
           SongId: songId,
           UserId: userId
@@ -48,11 +47,13 @@ module.exports = {
           error: 'you already have this set as a bookmark'
         })
       }
+      const newBookmark = await newBookmark.create({
+        SongId: songId,
+        UserId: userId
+      })
 
-      const newBookmark = await Bookmark.create(req.body)
       res.send(newBookmark)
     } catch (err) {
-      console.log(err)
       res.status(500).send({
         error: 'an error has occured trying to create the bookmark'
       })
