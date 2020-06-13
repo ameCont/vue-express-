@@ -2,6 +2,7 @@
    <v-layout>
     <v-flex xs6>
       <songs-bookmarks />
+      <recently-viewed-songs class="mt-2" />
     </v-flex>
 
     <v-flex xs6 class="ml-2">

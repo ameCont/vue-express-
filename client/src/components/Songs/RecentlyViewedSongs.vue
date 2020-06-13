@@ -49,7 +49,7 @@ export default {
   async mounted () {
     if (this.isUserLoggedIn) {
       this.bookmarks = (await SongHistoryService.index({
-        userId: this.user.id
+        UserId: this.user.id
       })).data
     }
   }
