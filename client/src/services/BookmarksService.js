@@ -1,21 +1,29 @@
 import Api from '@/services/Api'
 
 export default {
+  index (params) {
+    return Api().get('bookmarks', {
+      params: params
+    })
+  },
+  /*
   index (bookmark) {
-    /*
     return Api().get('bookmarks', {
       params: bookmark
     })
-    */
-    return Api().get('bookmarks', bookmark)
   },
+
   post (bookmark) {
     return Api().post('bookmarks', {
-      params: bookmark
+      params: params
     })
-    // return Api().post('bookmarks', bookmark)
+  },
+  */
+
+  post (bookmark) {
+    return Api().post('bookmarks', bookmark)
   },
   delete (bookmarkId) {
-    return Api().get(`bookmarks/${bookmarkId}`)
+    return Api().delete(`bookmarks/${bookmarkId}`)
   }
 }

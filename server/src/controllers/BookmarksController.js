@@ -1,25 +1,35 @@
-const {Bookmark} = require('../models')
-const { Op } = require('sequelize');
-
+const {
+  Bookmark,
+  Song,
+  User
+} = require('../models')
+const _ = require('lodash')
 module.exports = {
   async index (req, res) {
     try {
-      // const {songId, userId} = req.query
-      const songId = req.query.songId
-      const userId = req.query.userId
-      console.log('songId: ', songId)
-      console.log('userId: ', userId)
-      /*
-      const songId = req.body.params.songId
-      const userId = req.body.params.userId
-      */
-      const bookmark = await Bookmark.findOne({
-        where: {
-          SongId: songId,
-          UserId: userId
-        }
-      })
-      res.send(bookmark)
+      const {songId, userId} = req.query
+      console.log('songId POST: ',songId)
+      console.log('userId POST: ',userId)
+      const where = {
+        UserId: userId
+      }
+      if (songId) {
+        where.SongId = songId
+      }
+      const bookmarks = await Bookmark.findAll({
+        where: where,
+        include: [
+          {
+            model: Song
+          }
+        ]
+      }).map(bookmark => bookmark.toJSON())
+        .map(bookmark => _.extend(
+          {},
+          bookmark.Song,
+          bookmark
+        ))
+      res.send(bookmarks)
     } catch (err) {
       res.status(500).send({
         error: 'an error has occured trying to fetch the bookmark'
@@ -28,30 +38,22 @@ module.exports = {
   },
   async post (req, res) {
     try {
-      //const bookmark = req.body
       const {songId, userId} = req.body
-
-      // const songId = req.body.params.songId
-      // const userId = req.body.params.userId
-      console.log('songId: ', songId)
-
+      console.log('songId POST: ',songId)
+      console.log('userId POST: ',userId)
       const bookmark = await Bookmark.findOne({
-
         where: {
           SongId: songId,
           UserId: userId
         }
       })
       if (bookmark) {
-        return res.status(400).send({
-          error: 'you already have this set as a bookmark'
+        return req.status(400).send({
+          error: 'You already have this set as a bookmark'
         })
       }
-      const newBookmark = await newBookmark.create({
-        SongId: songId,
-        UserId: userId
-      })
-
+      const newBookmark = await Bookmark.create(req.body)
+      // console.log('bookmark: ',bookmark)
       res.send(newBookmark)
     } catch (err) {
       res.status(500).send({
