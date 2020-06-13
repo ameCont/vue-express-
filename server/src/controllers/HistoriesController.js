@@ -8,7 +8,7 @@ module.exports = {
   async index (req, res) {
     try {
       const {UserId} = req.query
-      const historys = await History.findAll({
+      const histories = await History.findAll({
         where: {
           UserId: UserId
         },
@@ -23,7 +23,7 @@ module.exports = {
           history.Song,
           history
         ))
-      res.send(historys)
+      res.send(_.uniqBy(histories, history => history.SongId))
     } catch (err) {
       res.status(500).send({
         error: 'an error has occured trying to fetch the history'
