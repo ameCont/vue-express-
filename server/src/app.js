@@ -9,7 +9,8 @@ const app = express ()
 app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
-console.log('mesaj')
+
+require('./passport')
 
 require('./routes')(app)
 
