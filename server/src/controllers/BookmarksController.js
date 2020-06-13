@@ -8,8 +8,8 @@ module.exports = {
   async index (req, res) {
     try {
       const {songId, userId} = req.query
-      console.log('songId POST: ',songId)
-      console.log('userId POST: ',userId)
+      console.log('songId GET: ',songId)
+      console.log('userId GET: ',userId)
       const where = {
         UserId: userId
       }
@@ -38,13 +38,15 @@ module.exports = {
   },
   async post (req, res) {
     try {
-      const {songId, userId} = req.body
-      console.log('songId POST: ',songId)
-      console.log('userId POST: ',userId)
+      // const songId = req.body.params.songId
+      // const userId = req.body.params.userId
+      const {SongId, UserId} = req.body
+      console.log('songId POST run: ',SongId)
+      console.log('userId POST: ',UserId)
       const bookmark = await Bookmark.findOne({
         where: {
-          SongId: songId,
-          UserId: userId
+          SongId: SongId,
+          UserId: UserId
         }
       })
       if (bookmark) {
@@ -52,7 +54,10 @@ module.exports = {
           error: 'You already have this set as a bookmark'
         })
       }
-      const newBookmark = await Bookmark.create(req.body)
+      const newBookmark = await Bookmark.create({
+        SongId: SongId,
+        UserId: UserId
+      })
       // console.log('bookmark: ',bookmark)
       res.send(newBookmark)
     } catch (err) {
