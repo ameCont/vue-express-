@@ -7,14 +7,14 @@ const _ = require('lodash')
 module.exports = {
   async index (req, res) {
     try {
-      const {songId, userId} = req.query
-      console.log('songId GET: ',songId)
-      console.log('userId GET: ',userId)
+      const {SongId, UserId} = req.query
+      console.log('songId GET: ',SongId)
+      console.log('userId GET: ',UserId)
       const where = {
-        UserId: userId
+        UserId: UserId
       }
-      if (songId) {
-        where.SongId = songId
+      if (SongId) {
+        where.SongId = SongId
       }
       const bookmarks = await Bookmark.findAll({
         where: where,

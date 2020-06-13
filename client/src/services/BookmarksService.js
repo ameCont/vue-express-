@@ -12,17 +12,16 @@ export default {
       params: bookmark
     })
   },
-
-    post (bookmark) {
-    return Api().post('bookmarks', {
-      params: bookmark
-    })
+ post (bookmark) {
+    return Api().post('bookmarks', bookmark)
   },
 
   */
 
-  post (bookmark) {
-    return Api().post('bookmarks', bookmark)
+  post (params) {
+    return Api().post('bookmarks', {
+      params: params
+    })
   },
   delete (bookmarkId) {
     return Api().delete(`bookmarks/${bookmarkId}`)
