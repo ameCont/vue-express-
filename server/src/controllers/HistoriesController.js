@@ -7,7 +7,7 @@ const _ = require('lodash')
 module.exports = {
   async index (req, res) {
     try {
-      const {UserId} = req.query
+      const UserId = req.user.id
       const histories = await History.findAll({
         where: {
           UserId: UserId
@@ -32,7 +32,8 @@ module.exports = {
   },
   async post (req, res) {
     try {
-      const {SongId, UserId} = req.body
+      const UserId = req.user.id
+      const {SongId} = req.body
       const history = await History.create({
         SongId: SongId,
         UserId: UserId

@@ -85,8 +85,8 @@ export default {
     try {
       const bookmarks = (await BookmarksService.index({
         // songId: this.song.id,
-        SongId: this.$store.state.route.params.songId,
-        UserId: this.user.id
+        SongId: this.$store.state.route.params.songId
+        // UserId: this.user.id
       })).data
       console.log('watcher')
       if (bookmarks.length) {
@@ -101,11 +101,11 @@ export default {
       // console.log('try setAsBookmark')
       try {
         const SongId = this.song.id
-        const UserId = this.$store.state.user.id
-        console.log('setAsBookmark songId b', SongId, 'userId b', UserId)
+        // const UserId = this.$store.state.user.id
+        // console.log('setAsBookmark songId b', SongId, 'userId b', UserId)
         this.bookmark = (await BookmarksService.post({
-          SongId: SongId,
-          UserId: UserId
+          SongId: SongId
+         // UserId: UserId
           // userId: this.user.id
         })).data
       } catch (err) {

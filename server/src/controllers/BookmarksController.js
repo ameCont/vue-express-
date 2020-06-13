@@ -37,11 +37,12 @@ module.exports = {
   },
   async post (req, res) {
     try {
+      const UserId = req.user.id
       //const SongId = req.body.params.SongId
       //const UserId = req.body.params.UserId
-      const {SongId, UserId} = req.body
-      console.log('songId POST run: ',SongId)
-      console.log('userId POST: ',UserId)
+      const {SongId} = req.body
+      // console.log('songId POST run: ',SongId)
+      // console.log('userId POST: ',UserId)
       const bookmark = await Bookmark.findOne({
         where: {
           SongId: SongId,
@@ -67,8 +68,19 @@ module.exports = {
   },
   async delete (req, res) {
     try {
+      const UserId = req.user.id
       const {bookmarkId} = req.params
-      const bookmark = await Bookmark.findByPk(bookmarkId)
+      const bookmark = await Bookmark.findOne({
+        where: {
+          id: bookmarkId,
+          UserId: UserId
+        }
+      })
+      if (!bookmark) {
+        return res.status(403).send({
+          error: 'you do not have access to this bookmark'
+        })
+      }
       await bookmark.destroy()
       res.send(bookmark)
     } catch (err) {
