@@ -33,7 +33,7 @@
           dark
           class="cyan"
           @click="setAsBookmark">
-          Set As Bookmar
+          Set As Bookmark
         </v-btn>
 
         <v-btn
