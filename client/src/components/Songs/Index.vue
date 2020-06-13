@@ -5,7 +5,10 @@
       <recently-viewed-songs class="mt-2" />
     </v-flex>
 
-    <v-flex xs6 class="ml-2">
+    <v-flex :class="{
+      xs12: !isUserLoggedIn,
+      xs6: isUserLoggedIn,
+    }" class="ml-2">
       <songs-search-panel />
       <songs-panel class="mt-2"/>
     </v-flex>
