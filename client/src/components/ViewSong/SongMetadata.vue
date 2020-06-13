@@ -33,7 +33,7 @@
           dark
           class="cyan"
           @click="setAsBookmark">
-          Set As Bookmark
+          Set As Bookmar
         </v-btn>
 
         <v-btn
@@ -73,35 +73,42 @@ export default {
       'user'
     ])
   },
-  watch: {
-    async song () {
-      if (!this.isUserLoggedIn) {
-        return
-      }
+  async mounted () {
+    console.log('watcher0')
+    // async song () {
+    /*
+    if (!this.isUserLoggedIn) {
+      return
+    }
+    */
 
-      try {
-        const bookmarks = (await BookmarksService.index({
-          // songId: this.song.id,
-          songId: this.$store.state.route.params.songId,
-          userId: this.user.id
-        })).data
-        if (bookmarks.length) {
-          this.bookmark = bookmarks[0]
-        }
-      } catch (err) {
-        console.log(err)
+    try {
+      const bookmarks = (await BookmarksService.index({
+        // songId: this.song.id,
+        songId: this.$store.state.route.params.songId,
+        userId: this.user.id
+      })).data
+      console.log('watcher')
+      if (bookmarks.length) {
+        this.bookmark = bookmarks[0]
       }
+    } catch (err) {
+      console.log(err)
     }
   },
   methods: {
     async setAsBookmark () {
+      console.log('try setAsBookmark')
       try {
         console.log('setAsBookmark')
+        const songId = this.song.id
+        const userId = this.$store.state.user.id
+        console.log('songId', songId, 'userId', userId)
         this.bookmark = (await BookmarksService.post({
           songId: this.song.id,
-          userId: this.user.id
+          userId: this.$store.state.user.id
+          // userId: this.user.id
         })).data
-        console.log(this.song.id)
       } catch (err) {
         console.log(err)
       }
