@@ -100,10 +100,9 @@ export default {
     async setAsBookmark () {
       // console.log('try setAsBookmark')
       try {
-        console.log('setAsBookmark')
         const SongId = this.song.id
         const UserId = this.$store.state.user.id
-        console.log('songId b', SongId, 'userId b', UserId)
+        console.log('setAsBookmark songId b', SongId, 'userId b', UserId)
         this.bookmark = (await BookmarksService.post({
           SongId: SongId,
           UserId: UserId

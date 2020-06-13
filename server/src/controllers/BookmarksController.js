@@ -38,8 +38,8 @@ module.exports = {
   },
   async post (req, res) {
     try {
-      // const songId = req.body.params.songId
-      // const userId = req.body.params.userId
+      //const SongId = req.body.params.SongId
+      //const UserId = req.body.params.UserId
       const {SongId, UserId} = req.body
       console.log('songId POST run: ',SongId)
       console.log('userId POST: ',UserId)
